@@ -1,0 +1,56 @@
+from pong.models import Player
+from pong.models import Game
+from pong.models import League
+from pong.models import Award
+
+l1 = League()
+l1.name = "The Fighting Unicorns"
+l1.save()
+
+l2 = League()
+l2.name = "Wash U Wash Me"
+l2.save()
+
+a1 = Award()
+a1.name = "Blackout Status"
+a1.save()
+
+a2 = Award()
+a2.name = "Pong King"
+a2.save()
+
+a3 = Award()
+a3.name = "Immortal"
+a3.save()
+
+p1 = Player()
+p1.name = "Eddie"
+p1.adminstatus = True
+p1.psr = 1550
+p1.league = l1
+p1.save()
+p1.awards.add(a1)
+p1.save()
+
+p2 = Player()
+p2.name = "Daniel the Maniel"
+p2.league = l1
+p2.save()
+p2.awards.add(a3)
+p2.save()
+
+p3 = Player()
+p3.name = "Sean"
+p3.psr = 1650
+p3.league = l1
+p3.save()
+p3.awards.add(a2, a3)
+p3.adminstatus = True
+p3.save()
+
+p4 = Player()
+p4.name = "Phil"
+p4.league = l2
+p4.save()
+
+

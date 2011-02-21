@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+  <head>
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link type="text/css" href="static/css/black-tie/jquery-ui-1.8.9.custom.css" rel="Stylesheet" />	
+	<script type="text/javascript" src="static/js/jquery-1.4.4.min.js"></script> 
+	<script type="text/javascript" src="static/js/jquery-ui-1.8.9.custom.min.js"></script> 
+
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="../../blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../../blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  </head>
+
+
+
+<script type="text/javascript"> 	$(document).ready(function(){
+
+		$("a").click(function(event){
+     		$("span.player input").val("Sean is the Greatest!");
+  	 	});
+
+		//Autocomplete names
+  		var availableTags = ["Sean Holt", "Eddie Carlson", "Riley Strong"];
+		$( "input" ).autocomplete({
+			source: availableTags
+		});
+
+		
+
+
+
+        //Riley starts
+		//Past teams button
+		$("#pastwin").buttonset({
+		});
+		//$('label[for="1recent"]').addClass("ui-corner-top");
+		//$('label[for="1recent"]').removeClass("ui-corner-left");
+
+		//use class last for bottom one
+
+
+        //$('label.last').addClass("ui-corner-bottom");
+		//$('label.last').removeClass("ui-corner-right");
+        //Riley Ends
+
+		//cupspread buttonset
+		$(".blackradio").buttonset({
+		});
+		
+		//cups corner format
+		$('label[for*="cup"]').removeClass("ui-corner-left ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr ui-corner-right ui-corner-top ui-corner-bottom ui-corner-all");
+		$('label[for|="1cup"]').addClass("ui-corner-tl");
+		$('label[for*="5"]').addClass("ui-corner-tr");
+		$('label[for*="6"]').addClass("ui-corner-bl");
+		$('label[for*="10"]').addClass("ui-corner-br");
+		
+		$("button, input:submit, a", ".blackbuttons").button();
+
+		//1v1 and 2v2 
+
+		$("#1v1").click(function(event){
+     		$("#winner2, #loser2").attr("disabled", true).addClass("disabled").val("");
+     		
+  	 	});
+
+  	 	$("#2v2").click(function(event){
+     		$("#winner2, #loser2").attr("disabled", false).removeClass("disabled");
+  	 	});
+
+  	 	
+		//formatting past games buttons 
+		$('label[for*="recent"]').removeClass("ui-corner-left ui-corner-bl, ui-corner-br ui-corner-tl ui-corner-tr ui-corner-right ui-corner-top ui-corner-bottom ui-corner-all");
+		$('label[for*="1recent"]').addClass("ui-corner-top");
+		$('label[for*="3recent"]').addClass("ui-corner-bottom");
+
+		//parse past teams array for buttons
+		//var team = {Sean:Riley, eddie:Noob};
+		//$.each(obj,function(index,p1,p2){
+		//	$("#" + index + "winteam").text(p1+ " &amp; " + p2);
+		//}); 
+				
+				
+		
+});
+
+
+	</script>
+
+
+
+  <body class="gray">
+  
+    
+
+
+
+<div class="container showgrid black tall">
+	<img src= "static/images/king.jpg"> 
+	<div class="span-24" id="nav">
+		<ul class="clearfix"> 
+		<li id="recordgame"> <a href=#> Record Game </a> </li>
+		<li id="rank" > <a href=#> Rank </a> </li>
+		<li id="addplayer"> <a href=#> Add Player </a> </li>
+		<li id="more"> <a href=#> More </a> </li>
+		</ul>
+	<hr>
+	</div>
+	
+
+	
+<form method="post">
+
+
+	
+	<span> <!-- span box for the form - separates number of players from rest -->
+	<fieldset class="span-7 winbox">
+		<legend> Winners </legend>
+		<p> Names: </p>
+		<span class="player"><input id="winner1"> </input></span>
+		<span class="player"><input id="winner2"> </input></span>
+		<hr>
+
+		
+		<p> Past teams: </p>
+
+		<table class="blackradio"> 
+			<tbody>
+			<tr><td><input type="radio" id="1recent" name="past_teams" ><label for="1recent"> Eddie &amp; Sean</label></input></td></tr>
+			<tr><td><input type="radio" id="2recent" name="past_teams" ><label for="2recent" >Eddie &amp; Sean</label></input></td></tr>
+			<tr><td><input type="radio" id="3recent" name="past_teams" ><label for="3recent" >Eddie &amp; Sean</label></input></td></tr>
+			</tbody>
+		</table>
+
+		
+		 
+		
+	</fieldset>
+
+	<div class="span-6 spread float left"> 
+	<img src = "static/images/crown.jpg"> <br>
+
+	
+	<div class=" blackradio" style="float:center">
+	<input type="radio" id="1v1" name="teamsize"><label for="1v1"> 1 vs 1 </label></input>
+	<input type="radio" id="2v2" name="teamsize" CHECKED><label for="2v2"> 2 vs 2 </label></input>
+	<br>
+	</div>
+	<br>
+	<hr>
+	<br>
+	
+	<div class="blackradio"> 
+		<table id="cup_table">
+		    <tbody>
+		        <tr>
+		            <td><input type="radio" id="1cup" name="cupspread" CHECKED><label for="1cup"> 1</label></input></td>
+		            <td><input type="radio" id="2cup" name="cupspread"><label for="2cup"> 2</label></input></td>
+		            <td><input type="radio" id="3cup" name="cupspread"><label for="3cup"> 3</label></input></td>
+		            <td><input type="radio" id="4cup" name="cupspread"><label for="4cup"> 4</label></input></td>
+		            <td><input type="radio" id="5cup" name="cupspread"><label for="5cup"> 5</label></input></td>
+	            </tr>
+		        <tr>    
+		            <td><input type="radio" id="6cup" name="cupspread"><label for="6cup" > 6</label></input></td>
+		            <td><input type="radio" id="7cup" name="cupspread"><label for="7cup"> 7</label></input></td>
+		            <td><input type="radio" id="8cup" name="cupspread"><label for="8cup"> 8</label></input></td>
+		            <td><input type="radio" id="9cup" name="cupspread"><label for="9cup"> 9</label></input></td>
+		            <td><input type="radio" id="10cup" name="cupspread"><label for="10cup"> 10</label></input></td>
+	            </tr>
+            </tbody>
+        </table>
+		            
+		
+		
+		
+		<br>
+		
+		
+		
+		
+		
+
+
+
+	</div>
+		 <br><br> 
+
+		 <div class="blackbuttons normalfont"><input type="submit" value="Submit"></input></div>
+		 
+	</div>
+
+	
+	<fieldset class="span-7 winbox">
+		<legend color="white"> Losers </legend>
+		<p> Names: </p>
+		<span class="player"><input id="loser1"> </input> </span>
+		<span class="player"><input id="loser2"> </input> </span>
+		<hr>
+		
+		</fieldset>
+
+
+ 	</div>
+
+ </form>
+ </span>
+		
+	
+  </body>
+  </div>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+  <head>
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link type="text/css" href="/static/css/black-tie/jquery-ui-1.8.9.custom.css" rel="Stylesheet" />	
+	<script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script> 
+	<script type="text/javascript" src="/static/js/jquery-ui-1.8.9.custom.min.js"></script> 
+
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="/static/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="/static/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  </head>
+
+
+
+<script type="text/javascript"> 	$(document).ready(function(){
+
+
+
+		//cupspread buttonset
+		$(".blackradio").buttonset({
+		});
+
+
+		$("#admin").click(function(event){
+			$("#adminbox").show('slow')
+		});
+
+		$("#player").click(function(event){
+			$("#adminbox").hide()
+			$("#email").val("")
+			$("#password").val("")
+		});
+		
+		
+		$("button, input:submit, a", ".blackbuttons").button();
+
+	
+  	 	
+		
+});
+
+
+	</script>
+
+
+
+  <body class="gray">
+  
+    
+
+
+
+<div class="container showgrid black tall">
+	<img src= "static/images/king.jpg"> 
+	<div class="span-24" id="nav">
+		<ul class="clearfix"> 
+		<li id="recordgame"> <a href=#> Record Game </a> </li>
+		<li id="rank" > <a href=#> Rank </a> </li>
+		<li id="addplayer"> <a href=#> Add Player </a> </li>
+		<li id="more"> <a href=#> More </a> </li>
+		</ul>
+	<hr>
+	</div>
+
+
+	<form method="post">
+	<fieldset class= "span-7 winbox"> <legend> Player Information </legend>
+		<p> First Name* </p>
+		<input id="firstname" type="text"> </input>
+		<p> Last Name* </p>
+		<input id="lastname" type="text"> </input>
+		<hr>
+		<p> Does this person want to be able to record games?</p>
+		<span class="blackradio"> 
+			<input type="radio" name="admin" id="admin"><label for="admin"> Admin </label> </input>
+			<input type="radio" name="admin" id="player"><label for="player"> Player </label> </input>
+		</span>
+		
+		
+	</fieldset>
+
+
+	
+	<fieldset id="adminbox" class= "span-7 winbox"> <legend> Admin Information </legend>
+		<p> Email* </p>
+		<input id="email" type="text"> </input>
+		<p> Password* </p>
+		<input id="lastname" type="text"> </input>
+
+		
+
+		
+		
+	</fieldset>
+	<hr>
+	<span class="blackbuttons "><input type="submit" value="Submit"></input></span>
+
+
+	
+	
+	</form>
+	<br>
+	<br>
+
+	
+  </body>
+  </div>
+</html>
