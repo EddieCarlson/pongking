@@ -34,7 +34,6 @@ class Player(models.Model):
 	psr = models.IntegerField(default=1500)
 	games = models.ManyToManyField(Game, null=True)
 	awards = models.ManyToManyField(Award, null=True)
-	adminstatus = models.BooleanField()
 	rank = models.IntegerField(null=True, blank=True)
 	#take out default
 	league = models.ForeignKey(League, default=1)

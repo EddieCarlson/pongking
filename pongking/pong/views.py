@@ -1,5 +1,6 @@
 from operator import itemgetter
 
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -11,20 +12,26 @@ from pongking.pong.models import Game
 from pongking.pong.models import Player
 from pongking.pong.models import Award
 
+
 def addPlayer(request):
 	message = ""
 	if request.method == 'POST':
 		player = Player()
-		player.name = request.POST.get('firstname') + request.POST.get('lastname')#get pname from sean
-		if request.POST.get('admin'):
-			player.adminstatus = True
-		else:
-			player.adminstatus = False
+		player.name = request.POST.get('firstname') + " " + request.POST.get('lastname')
+		if request.POST.get('admin')=="1":
+			email = request.POST.get("email")
+			pw = request.POST.get("pw")
+			addUser(player, email, pw)
 		player.save()
-		message = "new player '" + player.name + "' has been created"	
+		message += "new player '" + player.name + "' has been created"	
 	
 	return render_to_response('addplayer.html', {'message' : message}, context_instance=RequestContext(request))
 
+#saves the given player, associates the player with a new user, saves the player
+def addUser(player, email, pw):
+	player.save()
+	player.user  = User.objects.create_user(player.name,email,pw) 
+	player.save()
 
 def addGame(request):
 	message = ""
@@ -37,7 +44,7 @@ def addGame(request):
 		cups = request.POST.get('cupspread')
 
 		#win1, lose1 must not be blank. win2, lose2 can be blank. finds all errors	
-		error = string.join(error, validateNames([player_names[0], player_names[2]], False), validateNames([player_names[1],player_names[3]], True))
+		error += validateNames([player_names[0], player_names[2]], False) + validateNames([player_names[1],player_names[3]], True)
 		
 		if len(error) > 25:
 			message = error
