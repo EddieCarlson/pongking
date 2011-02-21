@@ -25,6 +25,8 @@
 		$(".blackradio").buttonset({
 		});
 
+		$("#adminbox").hide()
+
 
 		$("#admin").click(function(event){
 			$("#adminbox").show('slow')
@@ -34,12 +36,13 @@
 			$("#adminbox").hide()
 			$("#email").val("")
 			$("#password").val("")
+			$("#password2").val("")
 		});
 		
 		
 		$("button, input:submit, a", ".blackbuttons").button();
 
-	
+		var myCars=new Array("Saab","Volvo","BMW");
   	 	
 		
 });
@@ -68,35 +71,39 @@
 	</div>
 
 
-	<form method="post"> {% csrf_token %}
-	<fieldset class= "span-7 winbox"> <legend> Player Information </legend>
+	<form method="post">
+	<fieldset class= "span-7 winbox ui-corner-all"> <legend> Player Information </legend>
 		<p> First Name* </p>
-		<input id="firstname" name="firstname"  type="text"> </input>
+		<input id="firstname" type="text"> </input>
 		<p> Last Name* </p>
-		<input id="lastname" name="lastname" type="text"> </input>
+		<input id="lastname" type="text"> </input>
 		<hr>
 		<p> Does this person want to be able to record games?</p>
-		<span class="blackradio"> 
+		<div class="blackradio" style="height:50px; padding:10px 0 0 50px"> 
 			<input type="radio" name="admin" id="admin"><label for="admin"> Admin </label> </input>
-			<input type="radio" name="admin" id="player"><label for="player"> Player </label> </input>
-		</span>
+			<input type="radio" name="admin" id="player" CHECKED><label for="player"> Player </label> </input>
+		
+		</div>
+		
 		
 		
 	</fieldset>
 
 
 	
-	<fieldset id="adminbox" class= "span-7 winbox"> <legend> Admin Information </legend>
+	<fieldset id="adminbox" class= "span-7 winbox ui-corner-all"> <legend> Admin Information </legend>
 		<p> Email* </p>
 		<input id="email" type="text"> </input>
 		<p> Password* </p>
-		<input id="lastname" type="text"> </input>
+		<input id="password" type="text"> </input>
+		<p> Retype password*
+		<input id="password2" type="text"> </input>
 
-		
-
-		
 		
 	</fieldset>
+
+
+	
 	<hr>
 	<span class="blackbuttons "><input type="submit" value="Submit"></input></span>
 

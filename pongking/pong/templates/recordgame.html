@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
-
+<!-- -->
 <html lang="en">
   <head>
   
@@ -104,11 +104,15 @@
 		<ul class="clearfix"> 
 		<li id="recordgame"> <a href=#> Record Game </a> </li>
 		<li id="rank" > <a href=#> Rank </a> </li>
+		<li id="compareplayers" > <a href=#> Compare Players </a> </li>
+		<li id="compareteams" > <a href=#> Compare Teams </a> </li>
 		<li id="addplayer"> <a href=#> Add Player </a> </li>
 		<li id="more"> <a href=#> More </a> </li>
+
 		</ul>
-	<hr>
+		<hr class="navb">
 	</div>
+
 	
 
 	
@@ -116,9 +120,12 @@
 
 
 	
-	<span> <!-- span box for the form - separates number of players from rest -->
-	<fieldset class="span-7 winbox">
-		<legend> Winners </legend>
+<span> <!-- span box for the form - separates number of players from rest -->
+
+	<span class="span-8">
+	<img src= "static/images/winners.jpg" style="margin:0 0 0 20px"> 
+	<fieldset class="span-7 winbox ui-corner-all" >
+		
 		<p> Names: </p>
 		<span class="player"><input id="winner1"> </input></span>
 		<span class="player"><input id="winner2"> </input></span>
@@ -136,10 +143,12 @@
 		</table>
 
 		
-		 
-		
-	</fieldset>
 
+
+	
+	</fieldset>
+	</span>
+	
 	<div class="span-6 spread float left"> 
 	<img src = "static/images/crown.jpg"> <br>
 
@@ -152,7 +161,7 @@
 	<br>
 	<hr>
 	<br>
-	
+	<p style="color:white; font-size:16px"> Cup Spread: <p>
 	<div class="blackradio"> 
 		<table id="cup_table">
 		    <tbody>
@@ -192,15 +201,16 @@
 		 
 	</div>
 
-	
-	<fieldset class="span-7 winbox">
-		<legend color="white"> Losers </legend>
+	<span class="span-8">
+	<img src= "static/images/losers.jpg" style="margin: 0 0 0 20px"> 
+	<fieldset class="span-7 winbox ui-corner-all">
 		<p> Names: </p>
 		<span class="player"><input id="loser1"> </input> </span>
 		<span class="player"><input id="loser2"> </input> </span>
 		<hr>
 		
-		</fieldset>
+	</fieldset>
+	</span>
 
 
  	</div>
