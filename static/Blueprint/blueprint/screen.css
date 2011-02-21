@@ -266,19 +266,21 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 
 /*pongking custom css */
 div.logo {height: 100px; width: 400px; background: #eee;}
-#nav {font-size: 20px; font-weight: bold; background: black; }
-#nav a { color: white; padding-left: 40px; height: 40px ;text-decoration: none; display: block;}
+#nav {font-size: 18px; background: black; }
+#nav a {; color: white; padding-left: 40px; height: 30px ;text-decoration: none; display: block; vertical-align:middle}
 #nav li {float: left; position: relative; padding:0 10px}
 #nav ul{ list-style-type:none; margin: 0px; padding:0px 0px}
 #nav li#recordgame a{background: transparent url(../images/icons2.jpg) no-repeat 0% 5%}
 #nav li#rank a{background: transparent url(../images/icons2.jpg) no-repeat 0% 31%}
-#nav li#addplayer a{background: transparent url(../images/icons2.jpg) no-repeat 0% 58%}
-#nav li#more a{background:transparent url(../images/icons2.jpg) no-repeat 0% 78.9%}
-#nav hr{margin:0 5px; width:98%}
+#nav li#addplayer a{background: transparent url(../images/icons2.jpg) no-repeat 0% 54%}
+#nav li#compareplayers a{background: transparent url(../images/icons2.jpg) no-repeat 0% 31%}
+#nav li#compareteams a{background: transparent url(../images/icons2.jpg) no-repeat 0% 31%}
+#nav li#more a{background:transparent url(../images/icons2.jpg) no-repeat 0% 74%}
+hr.navb{margin:10px 5px 0 5px; width:98%}
 
-.chart {height:800px; background: gray; padding:}
+.chart {height:800px; background: #333333; padding:}
 .k p{color:white;font-size: 30px;margin: 0 ;padding:0}
-.k {height:100px;background-color: black ; border-style: solid; border-width: 1px;border-color:gray;outline; padding:0 15px}
+.k {height:100px;background-color: black ; border-style: solid; border-width: 1px;border-color:#333333;outline; padding:0 15px}
 
 
 .j p{font-size:300px;}
@@ -286,27 +288,38 @@ div.logo {height: 100px; width: 400px; background: #eee;}
 #drag {color:blue;height:40px;width:40px;background:green;float:right}
 .crazy {color:green}
 
-fieldset.winbox {font-size:20px;float:left;border-color:gray;margin:50px 15px; color:white; padding:15px 10px}
-fieldset.winbox p{color:gray; font-size:12px; padding:0; margin:0}
+fieldset.winbox {border-width:4px;font-size:20px;float:left;border-color:#E6BE73;margin:0px 15px; color:white; padding:5px 10px;}
+fieldset.winbox p{color:gray; font-size:16px; padding:0; margin:0}
 fieldset.winbox span.pastteams {font-size:12px}
 fieldset.winbox hr{margin:15px 0}
-.spread {float:center;text-align:center;background:black;float:left;padding:0 30px;color:white;margin:0}
+fieldset.winbox input{font-size:16px}
+.spread {margin:auto;text-align:center;background:black;float:left;padding:0 30px;color:white;margin:0}
 .spread p{font-size:20px}
-span.player input {width:97%%}
+span.player input {width:97%; font-size:16px; margin:10px 0px}
 .black {background:black}
-.disabled {background-color:gray;border-color:gray}
-.gray {background-color:gray;border-color:gray}
+.disabled {background-color:#333333;border-color:#333333}
+.gray {background-color:#333333;border-color:#333333;color:gray;}
 .n {font-size:500px}
 
 
 .normalfont {font-size:16px}
-table#cup_table label {width: 100%;}
+table#cup_table label {width: 90%;}
 table#cup_table td {width: 100px;padding:0}
 
 
 
 
-
+.blackbuttons {font-size:14px; padding:0}
 .blackradio label {font-size:14px}
 .blackradio td{padding:0}
 .blackradio {background-color:black}
+
+
+/* Colors 
+Gold -- #E6BE73
+Red-- #E1071B
+Gray -- #333333
+
+
+
+
