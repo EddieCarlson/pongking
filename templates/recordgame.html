@@ -1,20 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-<!-- -->
-<html lang="en">
-  <head>
-  
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link type="text/css" href="static/css/black-tie/jquery-ui-1.8.9.custom.css" rel="Stylesheet" />	
-	<script type="text/javascript" src="static/js/jquery-1.4.4.min.js"></script> 
-	<script type="text/javascript" src="static/js/jquery-ui-1.8.9.custom.min.js"></script> 
+{% extends 'base.html' %}
 
-    <!-- Framework CSS -->
-    <link rel="stylesheet" href="../../blueprint/screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="../../blueprint/print.css" type="text/css" media="print">
-    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-  </head>
-
+{% block content %}
 
 
 <script type="text/javascript"> 	$(document).ready(function(){
@@ -116,7 +102,7 @@
 	
 
 	
-<form method="post">
+<form method="post"> {% csrf_token %}
 
 
 	
@@ -127,8 +113,8 @@
 	<fieldset class="span-7 winbox ui-corner-all" >
 		
 		<p> Names: </p>
-		<span class="player"><input id="winner1"> </input></span>
-		<span class="player"><input id="winner2"> </input></span>
+		<span class="player"><input id="winner1" name="winner1"> </input></span>
+		<span class="player"><input id="winner2" name="winner2"> </input></span>
 		<hr>
 
 		
@@ -166,18 +152,18 @@
 		<table id="cup_table">
 		    <tbody>
 		        <tr>
-		            <td><input type="radio" id="1cup" name="cupspread" CHECKED><label for="1cup"> 1</label></input></td>
-		            <td><input type="radio" id="2cup" name="cupspread"><label for="2cup"> 2</label></input></td>
-		            <td><input type="radio" id="3cup" name="cupspread"><label for="3cup"> 3</label></input></td>
-		            <td><input type="radio" id="4cup" name="cupspread"><label for="4cup"> 4</label></input></td>
-		            <td><input type="radio" id="5cup" name="cupspread"><label for="5cup"> 5</label></input></td>
+		            <td><input type="radio" id="1cup" name="cupspread" value=1 CHECKED><label for="1cup"> 1</label></input></td>
+		            <td><input type="radio" id="2cup" name="cupspread" value=2><label for="2cup"> 2</label></input></td>
+		            <td><input type="radio" id="3cup" name="cupspread" value=3><label for="3cup"> 3</label></input></td>
+		            <td><input type="radio" id="4cup" name="cupspread" value=4><label for="4cup"> 4</label></input></td>
+		            <td><input type="radio" id="5cup" name="cupspread" value=5><label for="5cup"> 5</label></input></td>
 	            </tr>
 		        <tr>    
-		            <td><input type="radio" id="6cup" name="cupspread"><label for="6cup" > 6</label></input></td>
-		            <td><input type="radio" id="7cup" name="cupspread"><label for="7cup"> 7</label></input></td>
-		            <td><input type="radio" id="8cup" name="cupspread"><label for="8cup"> 8</label></input></td>
-		            <td><input type="radio" id="9cup" name="cupspread"><label for="9cup"> 9</label></input></td>
-		            <td><input type="radio" id="10cup" name="cupspread"><label for="10cup"> 10</label></input></td>
+		            <td><input type="radio" id="6cup" name="cupspread" value=6><label for="6cup" > 6</label></input></td>
+		            <td><input type="radio" id="7cup" name="cupspread" value=7><label for="7cup"> 7</label></input></td>
+		            <td><input type="radio" id="8cup" name="cupspread" value=8><label for="8cup"> 8</label></input></td>
+		            <td><input type="radio" id="9cup" name="cupspread" value=9><label for="9cup"> 9</label></input></td>
+		            <td><input type="radio" id="10cup" name="cupspread" value=10><label for="10cup"> 10</label></input></td>
 	            </tr>
             </tbody>
         </table>
@@ -205,8 +191,8 @@
 	<img src= "static/images/losers.jpg" style="margin: 0 0 0 20px"> 
 	<fieldset class="span-7 winbox ui-corner-all">
 		<p> Names: </p>
-		<span class="player"><input id="loser1"> </input> </span>
-		<span class="player"><input id="loser2"> </input> </span>
+		<span class="player"><input id="loser1" name="loser1"> </input> </span>
+		<span class="player"><input id="loser2" name="loser2"> </input> </span>
 		<hr>
 		
 	</fieldset>
@@ -222,3 +208,4 @@
   </body>
   </div>
 </html>
+{% endblock %}

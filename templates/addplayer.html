@@ -1,21 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+{% extends 'base.html' %}
 
-<html lang="en">
-  <head>
-  
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link type="text/css" href="/static/css/black-tie/jquery-ui-1.8.9.custom.css" rel="Stylesheet" />	
-	<script type="text/javascript" src="/static/js/jquery-1.4.4.min.js"></script> 
-	<script type="text/javascript" src="/static/js/jquery-ui-1.8.9.custom.min.js"></script> 
-
-    <!-- Framework CSS -->
-    <link rel="stylesheet" href="/static/Blueprint/blueprint/screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="/static/Blueprint/blueprint/print.css" type="text/css" media="print">
-    <!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-  </head>
-
-
+{% block content %}
 
 <script type="text/javascript"> 	$(document).ready(function(){
 
@@ -62,7 +47,7 @@
 	<img src= "static/images/king.jpg"> 
 	<div class="span-24" id="nav">
 		<ul class="clearfix"> 
-		<li id="recordgame"> <a href=#> Record Game </a> </li>
+		<li id="recordgame"> <a href='/addgame/'> Record Game </a> </li>
 		<li id="rank" > <a href=#> Rank </a> </li>
 		<li id="addplayer"> <a href=#> Add Player </a> </li>
 		<li id="more"> <a href=#> More </a> </li>
@@ -71,17 +56,17 @@
 	</div>
 
 
-	<form method="post">
+	<form method="post"> {% csrf_token %}
 	<fieldset class= "span-7 winbox ui-corner-all"> <legend> Player Information </legend>
 		<p> First Name* </p>
-		<input id="firstname" type="text"> </input>
+		<input id="firstname" name="firstname" type="text"> </input>
 		<p> Last Name* </p>
-		<input id="lastname" type="text"> </input>
+		<input id="lastname" name="lastname" type="text"> </input>
 		<hr>
 		<p> Does this person want to be able to record games?</p>
 		<div class="blackradio" style="height:50px; padding:10px 0 0 50px"> 
-			<input type="radio" name="admin" id="admin"><label for="admin"> Admin </label> </input>
-			<input type="radio" name="admin" id="player" CHECKED><label for="player"> Player </label> </input>
+			<input type="radio" name="admin" id="admin" value="1"><label for="admin"> Admin </label> </input>
+			<input type="radio" name="admin" id="player" value="0"CHECKED><label for="player"> Player </label> </input>
 		
 		</div>
 		
@@ -93,9 +78,9 @@
 	
 	<fieldset id="adminbox" class= "span-7 winbox ui-corner-all"> <legend> Admin Information </legend>
 		<p> Email* </p>
-		<input id="email" type="text"> </input>
+		<input id="email" name="email" type="text"> </input>
 		<p> Password* </p>
-		<input id="password" type="text"> </input>
+		<input id="password" name="pw"  type="text"> </input>
 		<p> Retype password*
 		<input id="password2" type="text"> </input>
 
@@ -118,3 +103,5 @@
   </body>
   </div>
 </html>
+
+{% endblock %}
