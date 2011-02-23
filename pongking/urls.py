@@ -12,7 +12,9 @@ admin.autodiscover()
 doc_root = os.path.join(settings.BASE_PATH, 'static')
 urlpatterns = patterns('',
 	
-	(r'^$', 'pongking.pong.views.addPlayer'),
+	(r'^$', 'pongking.pong.views.loginpage'),
+	(r'^addplayer/$', 'pongking.pong.views.addPlayer'),
+	(r'^addgame/$', 'pongking.pong.views.addGame'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': doc_root}),
 
