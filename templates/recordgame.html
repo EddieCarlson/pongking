@@ -1,111 +1,77 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block title %}Record Game{% endblock %}
 
-
-<script type="text/javascript"> 	$(document).ready(function(){
-
-		$("a").click(function(event){
+{% block javascript %}
+<script type="text/javascript">
+    $(function() {
+	    $("a").click(function(event){
      		$("span.player input").val("Sean is the Greatest!");
-  	 	});
+     	});
 
-		//Autocomplete names
-  		var availableTags = ["Sean Holt", "Eddie Carlson", "Riley Strong"];
-		$( "input" ).autocomplete({
-			source: availableTags
-		});
-
-		
-
-
+	    //Autocomplete names
+	    var availableTags = ["Sean Holt", "Eddie Carlson", "Riley Strong"];
+	    $( "input" ).autocomplete({
+		    source: availableTags
+	    });
 
         //Riley starts
-		//Past teams button
-		$("#pastwin").buttonset({
-		});
-		//$('label[for="1recent"]').addClass("ui-corner-top");
-		//$('label[for="1recent"]').removeClass("ui-corner-left");
+	    //Past teams button
+	    $("#pastwin").buttonset({
+	    });
+	    //$('label[for="1recent"]').addClass("ui-corner-top");
+	    //$('label[for="1recent"]').removeClass("ui-corner-left");
 
-		//use class last for bottom one
+	    //use class last for bottom one
 
 
         //$('label.last').addClass("ui-corner-bottom");
-		//$('label.last').removeClass("ui-corner-right");
+	    //$('label.last').removeClass("ui-corner-right");
         //Riley Ends
 
-		//cupspread buttonset
-		$(".blackradio").buttonset({
-		});
-		
-		//cups corner format
-		$('label[for*="cup"]').removeClass("ui-corner-left ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr ui-corner-right ui-corner-top ui-corner-bottom ui-corner-all");
-		$('label[for|="1cup"]').addClass("ui-corner-tl");
-		$('label[for*="5"]').addClass("ui-corner-tr");
-		$('label[for*="6"]').addClass("ui-corner-bl");
-		$('label[for*="10"]').addClass("ui-corner-br");
-		
-		$("button, input:submit, a", ".blackbuttons").button();
+	    //cupspread buttonset
+	    $(".blackradio").buttonset({
+	    });
+	
+	    //cups corner format
+	    $('label[for*="cup"]').removeClass("ui-corner-left ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr ui-corner-right ui-corner-top ui-corner-bottom ui-corner-all");
+	    $('label[for|="1cup"]').addClass("ui-corner-tl");
+	    $('label[for*="5"]').addClass("ui-corner-tr");
+	    $('label[for*="6"]').addClass("ui-corner-bl");
+	    $('label[for*="10"]').addClass("ui-corner-br");
+	
+	    $("button, input:submit, a", ".blackbuttons").button();
 
-		//1v1 and 2v2 
+	    //1v1 and 2v2 
 
-		$("#1v1").click(function(event){
+	    $("#1v1").click(function(event){
      		$("#winner2, #loser2").attr("disabled", true).addClass("disabled").val("");
      		
-  	 	});
+     	});
 
-  	 	$("#2v2").click(function(event){
+     	$("#2v2").click(function(event){
      		$("#winner2, #loser2").attr("disabled", false).removeClass("disabled");
-  	 	});
+     	});
 
-  	 	
-		//formatting past games buttons 
-		$('label[for*="recent"]').removeClass("ui-corner-left ui-corner-bl, ui-corner-br ui-corner-tl ui-corner-tr ui-corner-right ui-corner-top ui-corner-bottom ui-corner-all");
-		$('label[for*="1recent"]').addClass("ui-corner-top");
-		$('label[for*="3recent"]').addClass("ui-corner-bottom");
+     	
+	    //formatting past games buttons 
+	    $('label[for*="recent"]').removeClass("ui-corner-left ui-corner-bl, ui-corner-br ui-corner-tl ui-corner-tr ui-corner-right ui-corner-top ui-corner-bottom ui-corner-all");
+	    $('label[for*="1recent"]').addClass("ui-corner-top");
+	    $('label[for*="3recent"]').addClass("ui-corner-bottom");
 
-		//parse past teams array for buttons
-		//var team = {Sean:Riley, eddie:Noob};
-		//$.each(obj,function(index,p1,p2){
-		//	$("#" + index + "winteam").text(p1+ " &amp; " + p2);
-		//}); 
-				
-				
-		
-});
+	    //parse past teams array for buttons
+	    //var team = {Sean:Riley, eddie:Noob};
+	    //$.each(obj,function(index,p1,p2){
+	    //	$("#" + index + "winteam").text(p1+ " &amp; " + p2);
+	    //}); 
+    });
+</script>
+{% endblock %}
 
-
-	</script>
-
-
-
-  <body class="gray">
-  
-    
-
-
-
-<div class="container showgrid black tall">
-	<img src= "static/images/king.jpg"> 
-	<div class="span-24" id="nav">
-		<ul class="clearfix"> 
-		<li id="recordgame"> <a href=#> Record Game </a> </li>
-		<li id="rank" > <a href=#> Rank </a> </li>
-		<li id="compareplayers" > <a href=#> Compare Players </a> </li>
-		<li id="compareteams" > <a href=#> Compare Teams </a> </li>
-		<li id="addplayer"> <a href=#> Add Player </a> </li>
-		<li id="more"> <a href=#> More </a> </li>
-
-		</ul>
-		<hr class="navb">
-	</div>
-
-	
-
-	
+{% block content %}
+{# TODO clean up hierarchy.  confusing & easy to miss a tag.  #}
 <form method="post"> {% csrf_token %}
 
-
-	
 <span> <!-- span box for the form - separates number of players from rest -->
 
 	<span class="span-8">
@@ -127,11 +93,6 @@
 			<tr><td><input type="radio" id="3recent" name="past_teams" ><label for="3recent" >Eddie &amp; Sean</label></input></td></tr>
 			</tbody>
 		</table>
-
-		
-
-
-	
 	</fieldset>
 	</span>
 	
@@ -167,19 +128,7 @@
 	            </tr>
             </tbody>
         </table>
-		            
-		
-		
-		
 		<br>
-		
-		
-		
-		
-		
-
-
-
 	</div>
 		 <br><br> 
 
@@ -203,9 +152,4 @@
 
  </form>
  </span>
-		
-	
-  </body>
-  </div>
-</html>
 {% endblock %}
