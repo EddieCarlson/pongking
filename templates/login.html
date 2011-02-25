@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}Login{% endblock %}
+
 {% block content %}
 <form method="post"> {% csrf_token%}
 
@@ -12,5 +14,4 @@ password:
 <input type="submit" name="submit"/>
 
 </form>
-
 {% endblock %}
