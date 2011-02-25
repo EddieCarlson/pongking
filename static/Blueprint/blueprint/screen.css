@@ -270,12 +270,12 @@ div.logo {height: 100px; width: 400px; background: #eee;}
 #nav a {; color: white; padding-left: 40px; height: 30px ;text-decoration: none; display: block; vertical-align:middle}
 #nav li {float: left; position: relative; padding:0 10px}
 #nav ul{ list-style-type:none; margin: 0px; padding:0px 0px}
-#nav li#recordgame a{background: transparent url(../images/icons2.jpg) no-repeat 0% 5%}
-#nav li#rank a{background: transparent url(../images/icons2.jpg) no-repeat 0% 31%}
-#nav li#addplayer a{background: transparent url(../images/icons2.jpg) no-repeat 0% 54%}
-#nav li#compareplayers a{background: transparent url(../images/icons2.jpg) no-repeat 0% 31%}
-#nav li#compareteams a{background: transparent url(../images/icons2.jpg) no-repeat 0% 31%}
-#nav li#more a{background:transparent url(../images/icons2.jpg) no-repeat 0% 74%}
+#nav li#recordgame a{background: transparent url(/static/images/icons2.jpg) no-repeat 0% 5%}
+#nav li#rank a{background: transparent url(/static/images/icons2.jpg) no-repeat 0% 31%}
+#nav li#addplayer a{background: transparent url(/static/images/icons2.jpg) no-repeat 0% 54%}
+#nav li#compareplayers a{background: transparent url(/static/images/icons2.jpg) no-repeat 0% 31%}
+#nav li#compareteams a{background: transparent url(/static/images/icons2.jpg) no-repeat 0% 31%}
+#nav li#more a{background:transparent url(/static/images/icons2.jpg) no-repeat 0% 74%}
 hr.navb{margin:10px 5px 0 5px; width:98%}
 
 .chart {height:800px; background: #333333; padding:}
@@ -307,6 +307,9 @@ table#cup_table label {width: 93%;}
 table#cup_table td {width: 100px;padding:0}
 table#cup_table {padding:.4em 0}
 
+
+table.pastteams {width:97%;}
+table.pastteams label{width:100%}
 
 
 .blackbuttons {font-size:14px; padding:0}

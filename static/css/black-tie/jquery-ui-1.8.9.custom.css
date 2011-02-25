@@ -66,9 +66,9 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid black; background: #333333 50% 50% repeat-x; font-weight: normal; color: #e3e3e3; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 2px solid black; background: #333333 50% 50% repeat-x; font-weight: normal; color: #e3e3e3; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #e3e3e3; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #777777; background: #333333 50% 50% repeat-x; font-weight: normal; color: #ffffff; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 2px solid #777777; background: #333333 50% 50% repeat-x; font-weight: normal; color: #ffffff; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #ffffff; text-decoration: none; }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 2px solid #E6BE73; background: #333333 50% 50% repeat-x; font-weight: normal; color: white; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #E6BE73; text-decoration: none; }
@@ -410,7 +410,7 @@ button.ui-button-icons-only { width: 3.7em; }
 
 /*button text element */
 .ui-button .ui-button-text { display: block; line-height: 1.4;  }
-.ui-button-text-only .ui-button-text { padding: .4em 1em; }
+.ui-button-text-only .ui-button-text { padding: .4em .9em; }
 .ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
 .ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
 .ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }

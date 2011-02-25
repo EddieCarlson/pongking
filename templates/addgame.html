@@ -50,11 +50,26 @@
 
 		$("#1v1").click(function(event){
      		$("#winner2, #loser2").attr("disabled", true).addClass("disabled").val("");
+     		$('label[for*="1v1"]').addClass("z2");
      		
   	 	});
 
   	 	$("#2v2").click(function(event){
      		$("#winner2, #loser2").attr("disabled", false).removeClass("disabled");
+     		$('label[for*="1v1"]').removeClass("z2");
+  	 	});
+
+		// disable or enable text boxes when clicking past team
+		$('input[name*="pastwin"]').click(function(event){
+     		$("#winner1, #winner2").addClass("disabled").val("");
+  			//still not working
+     		$("#2v2").removeAttr("checked");
+  	 	});
+
+  	 	$("#winner1, #winner2").click(function(event){
+     		$("#winner1, #winner2").removeClass("disabled");
+
+     		
   	 	});
 
   	 	
@@ -69,14 +84,12 @@
 		//	$("#" + index + "winteam").text(p1+ " &amp; " + p2);
 		//}); 
 				
-				
+		var myCars=new Array("Saab","Volvo","BMW");
 		
 });
 
 
 	</script>
-
-
 
 
   
@@ -104,15 +117,19 @@
 		
 		<p> Past teams: </p>
 
-		<table class="blackradio"> 
-			<tbody>
-			<tr><td><input type="radio" id="1recent" name="past_teams" ><label for="1recent"> Eddie &amp; Sean</label></input></td></tr>
-			<tr><td><input type="radio" id="2recent" name="past_teams" ><label for="2recent" >Eddie &amp; Sean</label></input></td></tr>
-			<tr><td><input type="radio" id="3recent" name="past_teams" ><label for="3recent" >Eddie &amp; Sean</label></input></td></tr>
-			</tbody>
-		</table>
 
-		
+
+
+
+<table class="blackradio pastteams">
+	<tbody>
+	{% for n in p%}
+			<tr><td><input type="radio" id="{{n}}" name="pastwin" class="ui-corner-all" ><label class="ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr" for="{{n}}" > {{n}} </label></input></td></tr>
+	{% endfor %}
+		<!--	invisible radio if text box is used instead of past games buttons -->
+		<tr ><td ><input type="radio" id="wn" name="pastwin" class="ui-corner-all"  ><label style="z-index:1; height:100px" class="ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr" for="wn" >  </label></input></td></tr>
+	</tbody>
+</table>
 
 
 	

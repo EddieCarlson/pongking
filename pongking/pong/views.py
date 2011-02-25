@@ -45,6 +45,7 @@ def L(u,s):
 	return max(int(u-(3*s))+1,0)
 
 def addGame(request):
+	p = ['Eddie Carlson & Sean Holt', 'Riley Strong & Phil Kimmey', 'Jason Bourne & Neo']
 	message = ""
 	if request.method == 'POST':
 		message = "game recorded"
@@ -54,6 +55,7 @@ def addGame(request):
 		player_names = getPlayerNames(request, game)	
 		game.cupspread = request.POST.get('cupspread')
 
+		
 		#win1, lose1 must not be blank. win2, lose2 can be blank. finds all errors	
 		error += validateNames(player_names, request.user) 
 		
@@ -62,9 +64,10 @@ def addGame(request):
 		else:
 			ratingChange(player_names, game)
 			game.save()
+		p = ['sean', 'eddie']
 
 	#have sean do (if messasge: report message) empty message evaluates to false
-	return render_to_response('addgame.html', {'message' : message}, context_instance=RequestContext(request))
+	return render_to_response('addgame.html', {'message' : message, 'p':p}, context_instance=RequestContext(request))
 
 
 #returns an array containing the names of the four players in a game. 
