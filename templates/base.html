@@ -22,12 +22,18 @@
 
 </head>
 
-        <body>
+        <body class="gray">
+       	
 	{{message}}
-                {% block content %}
-                hello, world
+                {% block navbar %} <!-- to exclude navbar extend blank navbar -->
+                		{%include "navbar.html" %}
                 {% endblock %}
 
+				{% block content %}
+				{%endblock%}   	
+					
+		</div> <!-- closes navbar div -->
         </body>
+        
 </html>
 

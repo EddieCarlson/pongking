@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 	
 	(r'^$', 'pongking.pong.views.loginpage'),
 	(r'^addplayer/$', 'pongking.pong.views.addPlayer'),
+	(r'^navbar/$', 'pongking.pong.views.navbar'),
 	(r'^addgame/$', 'pongking.pong.views.addGame'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': doc_root}),

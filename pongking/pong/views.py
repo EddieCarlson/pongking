@@ -28,6 +28,11 @@ def addPlayer(request):
 	
 	return render_to_response('addplayer.html', {'message' : message}, context_instance=RequestContext(request))
 
+def navbar(request):
+	
+	
+	return render_to_response('navbar.html', {}, context_instance=RequestContext(request))
+
 #saves the given player, associates the player with a new user, saves the player
 def addUser(player, email, pw):
 	player.save()
@@ -59,7 +64,7 @@ def addGame(request):
 			game.save()
 
 	#have sean do (if messasge: report message) empty message evaluates to false
-	return render_to_response('recordgame.html', {'message' : message}, context_instance=RequestContext(request))
+	return render_to_response('addgame.html', {'message' : message}, context_instance=RequestContext(request))
 
 
 #returns an array containing the names of the four players in a game. 
