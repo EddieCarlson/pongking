@@ -46,6 +46,7 @@ class Player(models.Model):
 	s = models.FloatField(default=25/3.0)
 	games = models.ManyToManyField(Game, blank=True, null=True)
 	awards = models.ManyToManyField(Award, blank=True, null=True)
+	level = models.DecimalField(max_digits=4, decimal_places=1, defualt=0)
 	rank = models.IntegerField(default=0)#TODO maybe need to change
 	#take out default
 	league = models.ForeignKey(League, blank=True, null=True)

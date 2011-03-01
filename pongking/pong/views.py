@@ -197,6 +197,7 @@ def ratingChange(player_names, game):
 	for i in range(len(u)):
 		players[i].u = u[i]
 		players[i].s = s[i]
+		players[i].level = L(u[i],s[i])
 		players[i].save()
 
 
