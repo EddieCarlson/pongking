@@ -8,10 +8,15 @@
 <meta name="viewport" content="width = 320" />
 
 <table>
-	{%for rank in rank %}
-		<tr> <td>{{forloop.counter}}</td> <td>{{rank}}</td> </tr>
+	{%for player in players|dictsortreversed:"rank" %}
+		<tr>
+		    <td>{{ forloop.counter }}</td>
+		    <td>{{ player }}</td>
+		    <td>{{ player.rank }}</td>
+	    </tr>
 	{%endfor%}
 </table>
+
 
 
 {%endblock%}

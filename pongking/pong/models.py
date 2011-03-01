@@ -43,13 +43,13 @@ class League(models.Model):
 class Player(models.Model):
 	name = models.CharField(max_length=40, unique=True)
 	u = models.FloatField(default=25)
-	s = models.FloatField(default=25/3.)
-	games = models.ManyToManyField(Game, null=True)
-	awards = models.ManyToManyField(Award, null=True)
-	rank = models.IntegerField(null=True, blank=True)
+	s = models.FloatField(default=25/3.0)
+	games = models.ManyToManyField(Game, blank=True, null=True)
+	awards = models.ManyToManyField(Award, blank=True, null=True)
+	rank = models.IntegerField(default=0)#TODO maybe need to change
 	#take out default
-	league = models.ForeignKey(League, default=1)
-	user = models.ForeignKey(User, null=True)
+	league = models.ForeignKey(League, blank=True, null=True)
+	user = models.ForeignKey(User, blank=True, null=True)
 		
 	def __unicode__(self):
 		return self.name

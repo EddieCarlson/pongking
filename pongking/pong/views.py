@@ -38,8 +38,8 @@ def mobileMenu(request):
 	return render_to_response('mobilemenu.html', {}, context_instance=RequestContext(request))
 
 def mobileRank(request):
-	rank = ['Sean Holt </td> <td> 17.4', 'Eddie Carlson </td> <td> 16.4', 'Daniel Rodriguez </td> <td> 14.2']
-	return render_to_response('mobilerank.html', {'rank' : rank}, context_instance=RequestContext(request))
+	players = Player.objects.all()#TODO Eddie make this eventually for leagues
+	return render_to_response('mobilerank.html', {'players' : players}, context_instance=RequestContext(request))
 
 #saves the given player, associates the player with a new user, saves the player
 def addUser(player, email, pw):
