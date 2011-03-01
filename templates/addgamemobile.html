@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 
-{% block content %}
 
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<meta name="viewport" content="width = 320" />
 
 <script type="text/javascript"> 	$(document).ready(function(){
 
-		$("a").click(function(event){
-     		$("span.player input").val("Sean is the Greatest!");
-  	 	});
+
+		// change body class to black
+		$('body').removeClass('gray').addClass('black');
+		
 
 		//Autocomplete names
 		var a = [ {%for p in p%} 
@@ -114,21 +119,24 @@
 
 	</script>
 
+<!-- Mobile nav bar -->
 
-  
-    
+<span class="blackradio"><button> <a href='/mobilemenu/'> Menu </a></button></span>
 
 
-	
+<!-- end mobile nav bar -->
 
-	
+<div class="black">
 <form method="post"> {% csrf_token %}
 
 
+<div class ="blackradio" style="margin:0 0 0 80px">
+	<input type="radio" id="1v1" name="teamsize"><label for="1v1"> 1 vs 1 </label></input>
+	<input type="radio" id="2v2" name="teamsize" CHECKED><label for="2v2"> 2 vs 2 </label></input>
+</div>
 
 
-
-<span> <!-- span box for the form - separates number of players from rest -->
+<span> <!-- span box for the form -->
 
 	<span class="span-8">
 	<img src= "/static/images/winners.jpg" style="margin:0 0 0 20px"> 
@@ -145,7 +153,7 @@
 
 
 
-
+<!-- Past teams-->
 <table class="blackradio pastteams">
 	<tbody>
 	{% for n in p%}
@@ -159,13 +167,37 @@
 	</fieldset>
 	</span>
 	
-	<div class="span-6 spread float left"> 
-	<img src = "/static/images/crown.jpg"> <br>
 
-	
-	<div class=" blackradio" style="float:center">
-	<input type="radio" id="1v1" name="teamsize"><label for="1v1"> 1 vs 1 </label></input>
-	<input type="radio" id="2v2" name="teamsize" CHECKED><label for="2v2"> 2 vs 2 </label></input>
+
+	<span class="span-8">
+	<img src= "/static/images/losers.jpg" style="margin: 0 0 0 20px"> 
+	<fieldset class="span-7 winbox ui-corner-all">
+		<p> Names: </p>
+		<span class="player"><input id="loser1" name="loser1"> </input> </span>
+		<span class="player"><input id="loser2" name="loser2"> </input> </span>
+		<hr>
+	<table class="blackradio pastteams">
+		<tbody>
+		{% for n in p%}
+			<tr><td><input type="radio" id="{{n}}loser" name="pastloss" class="ui-corner-all" ><label class="ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr" for="{{n}}loser" > {{n}} </label></input></td></tr>
+		{% endfor %}
+		</tbody>
+	</table>
+		
+	</fieldset>
+	</span>
+
+
+ 	</div>
+
+ </form>
+ </span>
+ </div>
+
+
+<!-- cup spread -->
+<div class=" blackradio" style="float:center">
+
 	<br>
 	</div>
 	<br>
@@ -191,48 +223,19 @@
 	            </tr>
             </tbody>
         </table>
-		            
-		
-		
-		
+		           
 		<br>
-		
-		
-		
-		
-		
 
 
+</div>
 
-	</div>
-		 <br><br> 
 
-		 <div class="blackbuttons normalfont"><input type="submit" value="Submit"></input></div>
+<div class="span-6 spread float left"> 
+
+	<div class="blackbuttons normalfont"><input type="submit" value="Submit"></input></div>
 		 
-	</div>
-
-	<span class="span-8">
-	<img src= "/static/images/losers.jpg" style="margin: 0 0 0 20px"> 
-	<fieldset class="span-7 winbox ui-corner-all">
-		<p> Names: </p>
-		<span class="player"><input id="loser1" name="loser1"> </input> </span>
-		<span class="player"><input id="loser2" name="loser2"> </input> </span>
-		<hr>
-	<table class="blackradio pastteams">
-		<tbody>
-		{% for n in p%}
-			<tr><td><input type="radio" id="{{n}}loser" name="pastloss" class="ui-corner-all" ><label class="ui-corner-bl ui-corner-br ui-corner-tl ui-corner-tr" for="{{n}}loser" > {{n}} </label></input></td></tr>
-		{% endfor %}
-		</tbody>
-	</table>
-		
-	</fieldset>
-	</span>
-
-
- 	</div>
-
- </form>
- </span>
+</div>
 
 {% endblock %}
+
+

@@ -298,6 +298,7 @@ fieldset.winbox input{font-size:16px}
 span.player input {width:97%; font-size:16px; margin:10px 0px}
 .black {background:black}
 .disabled {background-color:#333333;border-color:#333333}
+.disabled2 {background-color:#333333;border-color:#333333}
 .gray {background-color:#333333;border-color:#333333;color:gray;}
 .n {font-size:500px}
 
@@ -312,11 +313,16 @@ table.pastteams {width:97%;}
 table.pastteams label{width:100%}
 
 
-.blackbuttons {font-size:14px; padding:0}
+.blackbuttons {font-size:14px; padding:0; text-overflow:ellipsis}
 .blackradio label {font-size:14px}
 .blackradio td{padding:0}
 .blackradio {background-color:black}
 .z2 {z-index:2;}
+
+/*Mobile CSS start */
+
+.mobilebody {max-width:320px; background:black; font-size:13px; color:white}
+
 
 /* Colors 
 Gold -- #E6BE73

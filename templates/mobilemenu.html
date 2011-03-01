@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+{% endblock %}
+
+
+
+{% block content %}
+<meta name="viewport" content="width = 320" />
+<div class="black" style="width:320px">
+	<img src= "/static/images/kingmobile.jpg"> 
+	<div id="nav">
+		<ul class="clearfix"> 
+		<li id="recordgame"> <a href='/addgamemobile/'> Record Game </a> </li><hr>
+		<li id="rank" > <a href=#> Rank </a> </li><hr>
+		<li id="compareplayers" > <a href=#> Compare Players </a> </li><hr>
+		<li id="compareteams" > <a href=#> Compare Teams </a> </li><hr>
+		<li id="addplayer"> <a href='/addplayer/'> Add Player </a> </li><hr>
+		<li id="more"> <a href=#> More </a> </li>
+		</ul>
+	<hr>
+	</div>
+</div>
+{%endblock%}

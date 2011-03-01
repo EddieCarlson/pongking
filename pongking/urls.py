@@ -16,8 +16,11 @@ urlpatterns = patterns('',
 	(r'^addplayer/$', 'pongking.pong.views.addPlayer'),
 	(r'^navbar/$', 'pongking.pong.views.navbar'),
 	(r'^addgame/$', 'pongking.pong.views.addGame'),
+	(r'^mobilemenu/$', 'pongking.pong.views.mobileMenu'),
+	(r'^mobilerank/$', 'pongking.pong.views.mobileRank'),
+	(r'^addgamemobile/$', 'pongking.pong.views.addGameMobile'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': doc_root}),
+     	{'document_root': doc_root}),
 
     # Example:
     # (r'^pongking/', include('pongking.foo.urls')),

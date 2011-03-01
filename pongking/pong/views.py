@@ -33,6 +33,14 @@ def navbar(request):
 	
 	return render_to_response('navbar.html', {}, context_instance=RequestContext(request))
 
+def mobileMenu(request):
+	
+	return render_to_response('mobilemenu.html', {}, context_instance=RequestContext(request))
+
+def mobileRank(request):
+	rank = ['Sean Holt </td> <td> 17.4', 'Eddie Carlson </td> <td> 16.4', 'Daniel Rodriguez </td> <td> 14.2']
+	return render_to_response('mobilerank.html', {'rank' : rank}, context_instance=RequestContext(request))
+
 #saves the given player, associates the player with a new user, saves the player
 def addUser(player, email, pw):
 	player.save()
@@ -45,6 +53,31 @@ def L(u,s):
 	return max(int(u-(3*s))+1,0)
 
 def addGame(request):
+	p = ['Eddie Carlson | Sean Holt', 'Riley Strong | Phil Kimmey', 'Jason Bourne | Neo']
+	message = ""
+	if request.method == 'POST':
+		message = "game recorded"
+		error = "game not recorded: "
+		game = Game()
+		game.recorder = request.user	
+		player_names = getPlayerNames(request, game)	
+		game.cupspread = request.POST.get('cupspread')
+
+		
+		#win1, lose1 must not be blank. win2, lose2 can be blank. finds all errors	
+		error += validateNames(player_names, request.user) 
+		
+		if len(error) > 25:
+			message = error
+		else:
+			ratingChange(player_names, game)
+			game.save()
+
+
+	#have sean do (if messasge: report message) empty message evaluates to false
+	return render_to_response('addgame.html', {'message' : message, 'p':p}, context_instance=RequestContext(request))
+
+def addGameMobile(request):
 	p = ['Eddie Carlson & Sean Holt', 'Riley Strong & Phil Kimmey', 'Jason Bourne & Neo']
 	message = ""
 	if request.method == 'POST':
@@ -67,7 +100,7 @@ def addGame(request):
 		p = ['sean', 'eddie']
 
 	#have sean do (if messasge: report message) empty message evaluates to false
-	return render_to_response('addgame.html', {'message' : message, 'p':p}, context_instance=RequestContext(request))
+	return render_to_response('addgamemobile.html', {'message' : message, 'p':p}, context_instance=RequestContext(request))
 
 
 #returns an array containing the names of the four players in a game. 

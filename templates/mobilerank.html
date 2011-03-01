@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<meta name="viewport" content="width = 320" />
+
+<table>
+	{%for rank in rank %}
+		<tr> <td>{{forloop.counter}}</td> <td>{{rank}}</td> </tr>
+	{%endfor%}
+</table>
+
+
+{%endblock%}
+
