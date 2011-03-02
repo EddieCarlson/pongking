@@ -11,21 +11,21 @@ class Award(models.Model):
 
 
 class Game(models.Model):
-	date=models.DateTimeField(auto_now_add=True)
+	date = models.DateTimeField(auto_now_add=True)
 	
-	winner1 = models.CharField(max_length = 40)
-	winner2 = models.CharField(max_length = 40, blank=True, null=True)
-	loser1 = models.CharField(max_length = 40)
-	loser2 = models.CharField(max_length = 40, blank=True, null=True)
+	winner1 = models.CharField(max_length=40)
+	winner2 = models.CharField(max_length=40, blank=True, null=True)
+	loser1 = models.CharField(max_length=40)
+	loser2 = models.CharField(max_length=40, blank=True, null=True)
 	
 	win1delta = models.FloatField()
 	win2delta = models.FloatField(null=True)
 	lose1delta = models.FloatField()	
 	lose2delta = models.FloatField(null=True)
 	
-	wintype = models.IntegerField(null=True)
+	win_type = models.IntegerField(null=True)
 	recorder = models.ForeignKey(User)
-	cupspread = models.IntegerField(null=True)	
+	cup_spread = models.IntegerField(null=True)	
 	
 	def __unicode__(self):
 		if not self.winner2 == "":
@@ -42,11 +42,11 @@ class League(models.Model):
 
 class Player(models.Model):
 	name = models.CharField(max_length=40, unique=True)
-	u = models.FloatField(default=25)
-	s = models.FloatField(default=25/3.0)
+	mean = models.FloatField(default=25)
+	stdev = models.FloatField(default=25/3.0)
 	games = models.ManyToManyField(Game, blank=True, null=True)
 	awards = models.ManyToManyField(Award, blank=True, null=True)
-	level = models.DecimalField(max_digits=4, decimal_places=1, defualt=0)
+	level = models.DecimalField(max_digits=4, decimal_places=1, default=0)
 	rank = models.IntegerField(default=0)#TODO maybe need to change
 	#take out default
 	league = models.ForeignKey(League, blank=True, null=True)
