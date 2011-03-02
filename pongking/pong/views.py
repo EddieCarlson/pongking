@@ -80,6 +80,7 @@ def addGame(request):
 
 def addGameMobile(request):
 	p = ['Eddie Carlson & Sean Holt', 'Riley Strong & Phil Kimmey', 'Jason Bourne & Neo']
+	players = Player.objects.all()#TODO Eddie make this eventually for leagues
 	message = ""
 	if request.method == 'POST':
 		message = "game recorded"
@@ -101,7 +102,7 @@ def addGameMobile(request):
 		p = ['sean', 'eddie']
 
 	#have sean do (if messasge: report message) empty message evaluates to false
-	return render_to_response('addgamemobile.html', {'message' : message, 'p':p}, context_instance=RequestContext(request))
+	return render_to_response('addgamemobile.html', {'message' : message, 'p':p, 'players': players}, context_instance=RequestContext(request))
 
 
 #returns an array containing the names of the four players in a game. 

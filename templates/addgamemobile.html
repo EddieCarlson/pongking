@@ -15,8 +15,8 @@
 		
 
 		//Autocomplete names
-		var a = [ {%for p in p%} 
-			"{{p}}"
+		var a = [ {%for p in players|dictsort:"name"%} 
+			"{{p.name}}"
 			{%if not forloop.last%},{% endif %}
 
 		{%endfor%}];

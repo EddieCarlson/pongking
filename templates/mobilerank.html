@@ -5,18 +5,21 @@
 {% endblock %}
 
 {% block content %}
-<meta name="viewport" content="width = 320" />
+<meta name="viewport" content="width = 320px" />
 
+<fieldset class="mwinbox">
 <table>
-	{%for player in players|dictsortreversed:"rank" %}
+	{%for player in players|dictsortreversed:"u" %}
 		<tr>
 		    <td>{{ forloop.counter }}</td>
 		    <td>{{ player }}</td>
-		    <td>{{ player.rank }}</td>
+		    <td>{{ player.u }}</td>
+
 	    </tr>
+
 	{%endfor%}
 </table>
-
+</fieldset>
 
 
 {%endblock%}

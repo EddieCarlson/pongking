@@ -321,8 +321,7 @@ table.pastteams label{width:100%}
 
 /*Mobile CSS start */
 
-.mobilebody {max-width:320px; background:black; font-size:13px; color:white}
-
+fieldset.mwinbox {width:295px;border-width:2px;font-size:13px;float:left;border-color:#E6BE73;margin:0px 5px; color:white; padding:5px 5px;}
 
 /* Colors 
 Gold -- #E6BE73

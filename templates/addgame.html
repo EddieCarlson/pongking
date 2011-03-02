@@ -10,15 +10,15 @@
   	 	});
 
 		//Autocomplete names
-		var a = [ {%for p in p%} 
-			"{{p}}"
+		var a = [ {%for p in players%} 
+			"{{p.name}}"
 			{%if not forloop.last%},{% endif %}
 
 		{%endfor%}];
 		
 
 		
-  		var availableTags = ["Sean Holt", "Eddie Carlson", "Riley Strong"];
+
 		$( "input" ).autocomplete({
 			source: a
 		});
