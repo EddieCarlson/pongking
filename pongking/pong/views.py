@@ -14,7 +14,7 @@ from pongking.pong.models import Player
 from pongking.pong.models import Award
 
 
-def addPlayer(request):
+def add_player(request):
 	message = ""
 	if request.method == 'POST':
 		player = Player()
@@ -22,7 +22,7 @@ def addPlayer(request):
 		if request.POST.get('admin')=="1":
 			email = request.POST.get("email")
 			pw = request.POST.get("pw")
-			addUser(player, email, pw)
+			add_user(player, email, pw)
 		player.save()
 		message += "new player '" + player.name + "' has been created"	
 	
@@ -30,29 +30,28 @@ def addPlayer(request):
 
 def navbar(request):
 	
-	
 	return render_to_response('navbar.html', {}, context_instance=RequestContext(request))
 
-def mobileMenu(request):
+def mobile_menu(request):
 	
 	return render_to_response('mobilemenu.html', {}, context_instance=RequestContext(request))
 
-def mobileRank(request):
+def mobile_rank(request):
 	players = Player.objects.all()#TODO Eddie make this eventually for leagues
 	return render_to_response('mobilerank.html', {'players' : players}, context_instance=RequestContext(request))
 
 #saves the given player, associates the player with a new user, saves the player
-def addUser(player, email, pw):
+def add_user(player, email, pw):
 	player.save()
 	u = User.objects.create_user(email, email, pw)
 	u.save()
 	player.user  = u 
 	player.save()
 
-def L(u,s):
+def get_level(u,s):
 	return max(int(u-(3*s))+1,0)
 
-def addGame(request):
+def add_game(request):
 	p = ['Eddie Carlson | Sean Holt', 'Riley Strong | Phil Kimmey', 'Jason Bourne | Neo']
 	players = Player.objects.all()#TODO Eddie make this eventually for leagues
 	message = ""
@@ -61,24 +60,24 @@ def addGame(request):
 		error = "game not recorded: "
 		game = Game()
 		game.recorder = request.user	
-		player_names = getPlayerNames(request, game)	
+		player_names = get_player_names(request, game)	
 		game.cupspread = request.POST.get('cupspread')
 
 		
 		#win1, lose1 must not be blank. win2, lose2 can be blank. finds all errors	
-		error += validateNames(player_names, request.user) 
+		error += validate_names(player_names, request.user) 
 		
 		if len(error) > 25:
 			message = error
 		else:
-			ratingChange(player_names, game)
+			rating_change(player_names, game)
 			game.save()
 
 
 	#have sean do (if messasge: report message) empty message evaluates to false
 	return render_to_response('addgame.html', {'message' : message, 'p':p, 'players': players}, context_instance=RequestContext(request))
 
-def addGameMobile(request):
+def add_game_mobile(request):
 	p = ['Eddie Carlson & Sean Holt', 'Riley Strong & Phil Kimmey', 'Jason Bourne & Neo']
 	players = Player.objects.all()#TODO Eddie make this eventually for leagues
 	message = ""
@@ -87,12 +86,12 @@ def addGameMobile(request):
 		error = "game not recorded: "
 		game = Game()
 		game.recorder = request.user	
-		player_names = getPlayerNames(request, game)	
+		player_names = get_player_names(request, game)	
 		game.cupspread = request.POST.get('cupspread')
 
 		
 		#win1, lose1 must not be blank. win2, lose2 can be blank. finds all errors	
-		error += validateNames(player_names, request.user) 
+		error += validate_names(player_names, request.user) 
 		
 		if len(error) > 25:
 			message = error
@@ -107,7 +106,7 @@ def addGameMobile(request):
 
 #returns an array containing the names of the four players in a game. 
 #returns "" for extra players if 1v1 game
-def getPlayerNames(request, game):	
+def get_player_names(request, game):	
 	win1 = request.POST.get('winner1')
 	lose1 = request.POST.get('loser1')
 	win2 = request.POST.get('winner2')
@@ -124,7 +123,7 @@ def getPlayerNames(request, game):
 	return [win1,lose1]
 
 	
-def addLeague(request):
+def add_league(request):
 	error = ""
 	if request.method == 'POST':
 		name = request.POST.get('league')#
@@ -139,7 +138,7 @@ def addLeague(request):
 
 #checks if all names in the given list are names of players in the given league.
 #if blank_ok is True, an empty string is acceptable in place of a name. returns a string reporting errors
-def validateNames(names, user):
+def validate_names(names, user):
 	error = ""
 	league = user.player_set.all()[0].league
 	valid_names = [p.name for p in league.player_set.all()]
@@ -150,22 +149,22 @@ def validateNames(names, user):
 	
 
 
-def ratingChange(player_names, game):
+def rating_change(player_names, game):
 	allp = Player.objects.all()
 	players = [allp.get(name=n) for n in player_names]
-	u = [p.u for p in players]
-	s = [p.s for p in players]
+	means = [p.mean for p in players]
+	stdevs = [p.stdev for p in players]
 	
 	ci = 0
-	for si in s:
+	for si in stdevs:
 		ci += pow(si,2)
 	ci += (625./18)
 	c = math.sqrt(ci)
 	
-	if len(u) == 2:	
-		t = (u[0]-u[1])/c
+	if len(means) == 2:	
+		t = (means[0]-means[1])/c
 	else:
-		t = (u[0] + u[1] - u[2] - u[3])/c
+		t = (means[0] + means[1] - means[2] - means[3])/c
 	
 	S = 0
 	for n in range(60):
@@ -174,36 +173,36 @@ def ratingChange(player_names, game):
 	v = math.exp(-pow(t,2)/2.)/(math.sqrt(2)*S+math.sqrt(math.pi/2))
 	w = v * (v+t)
 
-	size = int(len(u)/2)
+	size = int(len(means)/2)
 	for i in range(size):
-		u[i] += pow(s[i], 2) * v/c
+		means[i] += pow(stdevs[i], 2) * v/c
 	for i in range(size):
-		u[i+size] -= pow(s[i+size], 2) * v/c
+		means[i+size] -= pow(stdevs[i+size], 2) * v/c
 	
-	for i in range(len(s)):
-		s[i] = math.sqrt(pow(s[i],2) * (1-((pow(s[i],2)*w/pow(c,2)))))
+	for i in range(len(stdevs)):
+		stdevs[i] = math.sqrt(pow(stdevs[i],2) * (1-((pow(stdevs[i],2)*w/pow(c,2)))))
 
 	L = []
-	for i in range(len(s)):
-		L.append(u[i]-(3*s[i]))
+	for i in range(len(stdevs)):
+		L.append(means[i]-(3*stdevs[i]))
 	
 	game.win1delta = L[0]
-	if len(s) == 2:
+	if len(stdevs) == 2:
 		game.lose1delta = L[1]
 	else:
 		game.win2delta = L[1]
 		game.lose1delta = L[2]
 		game.lose2delta = L[3]
 	
-	for i in range(len(u)):
-		players[i].u = u[i]
-		players[i].s = s[i]
-		players[i].level = L(u[i],s[i])
+	for i in range(len(means)):
+		players[i].mean = means[i]
+		players[i].stdev = stdevs[i]
+		players[i].level = get_level(means[i],stdevs[i])
 		players[i].save()
 
 
 
-def loginpage(request):
+def login_page(request):
 	message = ""
 	if request.method == "POST":
 		email = request.POST.get("email")
