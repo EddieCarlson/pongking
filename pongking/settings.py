@@ -1,9 +1,9 @@
 # Django settings for pongking project.
 import os
 
-BASE_PATH = os.path.abspath(__file__)
-for i in range(2):
-	BASE_PATH = os.path.dirname(BASE_PATH)
+#setting absolute base_path - should be git repo
+BASE_PATH = os.path.dirname( os.path.dirname( os.path.abspath(__file__) ) )
+# paths:    git repo        <- pongking      <- settings.py
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
