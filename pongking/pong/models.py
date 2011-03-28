@@ -28,7 +28,7 @@ class Game(models.Model):
 	cup_spread = models.IntegerField(null=True)	
 	
 	def __unicode__(self):
-		if not self.winner2 == "":
+		if not self.winner2 == "" and not self.loser2 == "":
 			return self.winner1 + " " + self.winner2 + " / " + self.loser1 + " " + self.loser2
 		else: 
 			return self.winner1 + " / " + self.loser1
