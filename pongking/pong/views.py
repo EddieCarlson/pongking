@@ -8,11 +8,10 @@ from django.template import RequestContext
 from datetime import datetime, timedelta
 import random, math
 
-from pongking.pong.models import League
-from pongking.pong.models import Game
-from pongking.pong.models import Player
-from pongking.pong.models import Award
-
+from pongking.leagues.models import League
+from pongking.games.models import Game
+from pongking.players.models import Player
+from pongking.awards.models import Award
 
 def add_player(request):
 	message = ""
