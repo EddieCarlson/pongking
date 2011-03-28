@@ -6,11 +6,8 @@ from pongking.players.models import Player
 class Game(models.Model):
 	date = models.DateTimeField(auto_now_add=True)
 
-	#TODO replace with manytomany fields! limiting to 2 players per side, plus breaking reverse lookup ability
-	winner1 = models.ForeignKey(Player, related_name="win_set1")
-	winner2 = models.ForeignKey(Player, blank=True, null=True, related_name="win_set2")
-	loser1 = models.ForeignKey(Player, related_name="lose_set1")
-	loser2 = models.ForeignKey(Player, blank=True, null=True, related_name="lose_set2")
+	winners = models.ManyToManyField(Player, related_name="wins")
+	losers = models.ManyToManyField(Player, related_name="losses")
 	
 	win1delta = models.FloatField()
 	win2delta = models.FloatField(null=True)
