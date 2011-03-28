@@ -19,7 +19,7 @@ class Game(models.Model):
 	cup_spread = models.IntegerField(null=True)	
 	
 	def __unicode__(self):
-		if self.winner2 and self.loser2:
-			return self.winner1 + " " + self.winner2 + " / " + self.loser1 + " " + self.loser2
-		else: 
-			return self.winner1 + " / " + self.loser1
+		output = ""
+		for winner in self.winners.all():
+			output += str(winner) + " "
+		return output
