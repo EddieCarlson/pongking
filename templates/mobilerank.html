@@ -9,11 +9,11 @@
 
 <fieldset class="mwinbox">
 <table>
-	{%for player in players|dictsortreversed:"u" %}
+	{%for player in players %}
 		<tr>
 		    <td>{{ forloop.counter }}</td>
 		    <td>{{ player }}</td>
-		    <td>{{ player.u }}</td>
+		    <td>{{ player.level }}</td>
 
 	    </tr>
 
